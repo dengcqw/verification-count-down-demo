@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PAVerifycell : NSObject
+@class PAVerifyCellModel;
+@interface PAVerifycell : UITableViewCell
+
+@property (strong, nonatomic) UITextField *textField;
+@property (strong, nonatomic) UIButton *verifyButton;
+@property (strong, nonatomic) PAVerifyCellModel *model;
+
+- (void)configCellWithCellModel:(PAVerifyCellModel *)model;
 
 @end

@@ -7,7 +7,19 @@
 //
 
 #import "RACSignal+Category.h"
+#import "RACScheduler.h"
+#import "RACSignal+Operations.h"
 
 @implementation RACSignal (Category)
+
++ (instancetype)countdownSignal {
+    return [[RACSignal return:@60] flattenMap:^RACStream *(NSNumber *startValue) {
+        __block NSUInteger count = startValue.unsignedIntegerValue;
+        return [[[RACSignal interval:1 onScheduler:[RACScheduler mainThreadScheduler]] map:^id(id value) {
+            count --;
+            return @(count).stringValue;
+        }] take:60];
+    }];
+}
 
 @end

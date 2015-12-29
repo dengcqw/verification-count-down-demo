@@ -9,5 +9,5 @@
 #import "RACSignal.h"
 
 @interface RACSignal (Category)
-
++ (instancetype)countdownSignal;
 @end
